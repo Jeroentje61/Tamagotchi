@@ -34,6 +34,18 @@ namespace Tamagotchi_WCF
                 case "eat":
                     actie = new Eat();
                     break;
+                case "play":
+                    actie = new Play();
+                    break;
+                case "hug":
+                    actie = new Hug();
+                    break;
+                case "workout":
+                    actie = new Workout();
+                    break;
+                case "sleep":
+                    actie = new Sleep();
+                    break;
                 default:
                     actie = null;
                     break;
