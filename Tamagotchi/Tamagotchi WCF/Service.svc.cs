@@ -25,9 +25,21 @@ namespace Tamagotchi_WCF
             return stats;
         }
 
-        public string PerformAction(IAction action)
+        public string PerformAction(string action)
         {
-            return action.Act();
+            action.ToLower();
+            IAction actie;
+            switch (action)
+            {
+                case "eat":
+                    actie = new Eat();
+                    break;
+                default:
+                    actie = null;
+                    break;
+            }
+            if (actie == null) return "onjuiste command";
+            return actie.Act();
         }
     }
 }

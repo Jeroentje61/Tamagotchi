@@ -14,12 +14,16 @@ namespace TamagotchiConsole
             TamagotchiService.ITamagotchiService service = new TamagotchiService.TamagotchiServiceClient();
 
             Console.WriteLine("Welkom bij je Tamagotchi!");
-            int[] stats = service.GetStatusses();
-            foreach (var item in service.GetStatusses())
+
+            Console.WriteLine("Typ een command in:");
+            Console.WriteLine("eat, hug, play, sleep, workout");
+
+            while (true)
             {
-                Console.WriteLine(item);
+                string command = Console.ReadLine();
+                Console.WriteLine(service.PerformAction(command));
             }
-            Console.ReadLine();
+            
         }
     }
 }

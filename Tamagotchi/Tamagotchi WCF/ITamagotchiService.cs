@@ -18,7 +18,7 @@ namespace Tamagotchi_WCF
         int[] GetStatusses();
 
         [OperationContract]
-        string PerformAction(Actions.IAction action);
+        string PerformAction(string action);
         
     }
 
