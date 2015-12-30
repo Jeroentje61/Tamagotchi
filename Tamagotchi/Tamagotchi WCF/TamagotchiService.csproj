@@ -64,7 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\Eat.cs" />
+    <Compile Include="Actions\Hug.cs" />
     <Compile Include="Actions\IAction.cs" />
+    <Compile Include="Actions\Play.cs" />
+    <Compile Include="Actions\Sleep.cs" />
+    <Compile Include="Actions\Workout.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>
