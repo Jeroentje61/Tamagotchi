@@ -18,7 +18,8 @@ namespace Tamagotchi_WCF
         public int Sleep { get; set; }
         public int Boredom { get; set; }
         public int Health { get; set; }
-
+        public DateTime AccesGranted { get; set; }
+        public DateTime LastAcces { get; set; }
 
     }
 }

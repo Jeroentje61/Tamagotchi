@@ -78,6 +78,15 @@
     <Compile Include="Actions\Play.cs" />
     <Compile Include="Actions\Sleep.cs" />
     <Compile Include="Actions\Workout.cs" />
+    <Compile Include="Migrations\201512301429389_InitialCreate.cs" />
+    <Compile Include="Migrations\201512301429389_InitialCreate.Designer.cs">
+      <DependentUpon>201512301429389_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512301456485_data.cs" />
+    <Compile Include="Migrations\201512301456485_data.Designer.cs">
+      <DependentUpon>201512301456485_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
     </Compile>
@@ -103,6 +112,14 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512301429389_InitialCreate.resx">
+      <DependentUpon>201512301429389_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512301456485_data.resx">
+      <DependentUpon>201512301456485_data.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

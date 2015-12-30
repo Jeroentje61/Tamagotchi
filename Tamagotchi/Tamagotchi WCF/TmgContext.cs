@@ -11,7 +11,7 @@ namespace Tamagotchi_WCF
     {
 
         public TmgContext()
-            : base("name=TmgDB")
+            : base("name=TamagotchiNiels_db")
         {
 
         }
