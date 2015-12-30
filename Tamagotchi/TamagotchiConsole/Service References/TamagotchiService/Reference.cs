@@ -15,6 +15,18 @@ namespace TamagotchiConsole.TamagotchiService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TamagotchiService.ITamagotchiService")]
     public interface ITamagotchiService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetTamagotchisResponse")]
+        string[] GetTamagotchis();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetTamagotchisResponse")]
+        System.Threading.Tasks.Task<string[]> GetTamagotchisAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse")]
+        string ChooseTamagotchi(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse")]
+        System.Threading.Tasks.Task<string> ChooseTamagotchiAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetStatusses", ReplyAction="http://tempuri.org/ITamagotchiService/GetStatussesResponse")]
         int[] GetStatusses();
         
@@ -22,11 +34,16 @@ namespace TamagotchiConsole.TamagotchiService {
         System.Threading.Tasks.Task<int[]> GetStatussesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/PerformAction", ReplyAction="http://tempuri.org/ITamagotchiService/PerformActionResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
-        string PerformAction(object action);
+        string PerformAction(string action);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/PerformAction", ReplyAction="http://tempuri.org/ITamagotchiService/PerformActionResponse")]
-        System.Threading.Tasks.Task<string> PerformActionAsync(object action);
+        System.Threading.Tasks.Task<string> PerformActionAsync(string action);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/CreateTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/CreateTamagotchiResponse")]
+        string CreateTamagotchi(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/CreateTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/CreateTamagotchiResponse")]
+        System.Threading.Tasks.Task<string> CreateTamagotchiAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,6 +73,22 @@ namespace TamagotchiConsole.TamagotchiService {
                 base(binding, remoteAddress) {
         }
         
+        public string[] GetTamagotchis() {
+            return base.Channel.GetTamagotchis();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetTamagotchisAsync() {
+            return base.Channel.GetTamagotchisAsync();
+        }
+        
+        public string ChooseTamagotchi(string name) {
+            return base.Channel.ChooseTamagotchi(name);
+        }
+        
+        public System.Threading.Tasks.Task<string> ChooseTamagotchiAsync(string name) {
+            return base.Channel.ChooseTamagotchiAsync(name);
+        }
+        
         public int[] GetStatusses() {
             return base.Channel.GetStatusses();
         }
@@ -64,12 +97,20 @@ namespace TamagotchiConsole.TamagotchiService {
             return base.Channel.GetStatussesAsync();
         }
         
-        public string PerformAction(object action) {
+        public string PerformAction(string action) {
             return base.Channel.PerformAction(action);
         }
         
-        public System.Threading.Tasks.Task<string> PerformActionAsync(object action) {
+        public System.Threading.Tasks.Task<string> PerformActionAsync(string action) {
             return base.Channel.PerformActionAsync(action);
+        }
+        
+        public string CreateTamagotchi(string name) {
+            return base.Channel.CreateTamagotchi(name);
+        }
+        
+        public System.Threading.Tasks.Task<string> CreateTamagotchiAsync(string name) {
+            return base.Channel.CreateTamagotchiAsync(name);
         }
     }
 }

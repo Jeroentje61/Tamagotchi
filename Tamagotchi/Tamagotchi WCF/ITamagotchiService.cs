@@ -9,17 +9,27 @@ using System.Text;
 
 namespace Tamagotchi_WCF
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    
     [ServiceContract]
     public interface ITamagotchiService
     {
+        [OperationContract]
+        List<string> GetTamagotchis();
+
+        [OperationContract]
+        string ChooseTamagotchi(string name);
 
         [OperationContract]
         int[] GetStatusses();
 
         [OperationContract]
         string PerformAction(string action);
-        
+
+
+        [OperationContract]
+        string CreateTamagotchi(string name);
+
+
     }
 
 

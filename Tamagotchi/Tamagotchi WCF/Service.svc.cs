@@ -53,5 +53,45 @@ namespace Tamagotchi_WCF
             if (actie == null) return "onjuiste command";
             return actie.Act();
         }
+
+        public List<string> GetTamagotchis()
+        {
+            List<string> lijst = new List<string>();
+            using (var context = new TmgContext())
+            {
+                List<Tamagotchi> temp = context.Tamagotchis.ToList();
+                foreach (Tamagotchi item in temp)
+                {
+                    lijst.Add(item.Naam);
+                }
+            }
+
+            return lijst;
+        }
+
+        public string ChooseTamagotchi(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string CreateTamagotchi(string name)
+        {
+            name.ToLower();
+            if (name == "nee") return "Je hebt ervoor gekozen geen Tamagotchi aan te maken";
+            using (var context = new TmgContext())
+            {
+                context.Tamagotchis.Add(new Tamagotchi()
+                {
+                    Naam = name,
+                    Hunger = 0,
+                    Sleep = 0,
+                    Boredom = 0,
+                    Health = 0                    
+                });
+                context.SaveChanges();
+                return ("Je Tamagotchi " + name + " is aangemaakt!");
+            }
+
+        }
     }
 }

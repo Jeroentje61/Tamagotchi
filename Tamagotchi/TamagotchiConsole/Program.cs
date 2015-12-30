@@ -13,7 +13,22 @@ namespace TamagotchiConsole
         {
             TamagotchiService.ITamagotchiService service = new TamagotchiService.TamagotchiServiceClient();
 
-            Console.WriteLine("Welkom bij je Tamagotchi!");
+            Console.WriteLine("Welkom!");
+            Console.WriteLine("Kies een van de volgende Tamagotchis door zijn/haar naam in te typen...");
+            //if (service.GetTamagotchis() != null)
+            //{
+            //    foreach (string item in service.GetTamagotchis())
+            //    {
+            //        Console.Write(item + ", ");
+            //    }
+            //}
+            //else
+            //{
+                Console.WriteLine("Je hebt nog geen Tamagotchis, wil je er een aanmaken? Zo ja, typ zijn naam in, zoniet, typ nee.");
+                string antwoord = Console.ReadLine();
+                service.CreateTamagotchi(antwoord);
+            //}
+           
 
             Console.WriteLine("Typ een command in:");
             Console.WriteLine("eat, hug, play, sleep, workout");
