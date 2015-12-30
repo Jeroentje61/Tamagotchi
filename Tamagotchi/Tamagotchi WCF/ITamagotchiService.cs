@@ -30,6 +30,28 @@ namespace Tamagotchi_WCF
         private int _sleep = 0;
         private int _boredom = 0;
         private int _health = 0;
+        private string _name = "";
+
+        public TamagotchiStats()
+        {
+
+        }
+
+        public TamagotchiStats(Tamagotchi tmg)
+        {
+            this._name = tmg.Naam;
+            this._boredom = tmg.Boredom;
+            this._health = tmg.Health;
+            this._hunger = tmg.Hunger;
+            this._sleep = tmg.Sleep;
+        }
+
+        [DataMember]
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
 
         [DataMember]
         public int Hunger
