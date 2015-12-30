@@ -17,6 +17,10 @@ namespace Tamagotchi_WCF
         public int[] GetStatusses()
         {
             int[] stats = new int[4];
+            stats[0] = 50;
+            stats[1] = 100;
+            stats[2] = 50;
+            stats[3] = 10;
 
             return stats;
         }

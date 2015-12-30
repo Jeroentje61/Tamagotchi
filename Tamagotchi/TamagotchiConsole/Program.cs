@@ -11,9 +11,15 @@ namespace TamagotchiConsole
     {
         static void Main(string[] args)
         {
-            ServiceReference1.ITamagotchiService service = new ServiceReference1.TamagotchiServiceClient();
+            TamagotchiService.ITamagotchiService service = new TamagotchiService.TamagotchiServiceClient();
 
             Console.WriteLine("Welkom bij je Tamagotchi!");
+            int[] stats = service.GetStatusses();
+            foreach (var item in service.GetStatusses())
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadLine();
         }
     }
 }

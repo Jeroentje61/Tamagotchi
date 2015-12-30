@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tamagotchi_WCF.ServiceReference1 {
+namespace TamagotchiConsole.TamagotchiService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITamagotchiService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TamagotchiService.ITamagotchiService")]
     public interface ITamagotchiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetStatusses", ReplyAction="http://tempuri.org/ITamagotchiService/GetStatussesResponse")]
@@ -30,12 +30,12 @@ namespace Tamagotchi_WCF.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITamagotchiServiceChannel : Tamagotchi_WCF.ServiceReference1.ITamagotchiService, System.ServiceModel.IClientChannel {
+    public interface ITamagotchiServiceChannel : TamagotchiConsole.TamagotchiService.ITamagotchiService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TamagotchiServiceClient : System.ServiceModel.ClientBase<Tamagotchi_WCF.ServiceReference1.ITamagotchiService>, Tamagotchi_WCF.ServiceReference1.ITamagotchiService {
+    public partial class TamagotchiServiceClient : System.ServiceModel.ClientBase<TamagotchiConsole.TamagotchiService.ITamagotchiService>, TamagotchiConsole.TamagotchiService.ITamagotchiService {
         
         public TamagotchiServiceClient() {
         }
