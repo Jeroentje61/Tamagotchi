@@ -24,8 +24,7 @@ namespace Tamagotchi_WCF
 
         [OperationContract]
         string PerformAction(string action);
-
-
+        
         [OperationContract]
         string CreateTamagotchi(string name);
 

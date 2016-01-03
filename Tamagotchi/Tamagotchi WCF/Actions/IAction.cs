@@ -11,6 +11,6 @@ namespace Tamagotchi_WCF.Actions
 
         int TimeSpan { get; }
 
-        string Act();
+        string Act(Tamagotchi tmg);
     }
 }

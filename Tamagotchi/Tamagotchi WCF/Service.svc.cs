@@ -13,20 +13,37 @@ namespace Tamagotchi_WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : ITamagotchiService
     {
+        private Tamagotchi _curTamagotchi { get; set; }
 
         public int[] GetStatusses()
         {
             int[] stats = new int[4];
-            stats[0] = 50;
-            stats[1] = 100;
-            stats[2] = 50;
-            stats[3] = 10;
+            stats[0] = _curTamagotchi.Hunger;
+            stats[1] = _curTamagotchi.Sleep;
+            stats[2] = _curTamagotchi.Boredom;
+            stats[3] = _curTamagotchi.Health;
 
             return stats;
         }
 
         public string PerformAction(string action)
         {
+            _curTamagotchi = new Tamagotchi();
+            List<Tamagotchi> tamagotchis = new List<Tamagotchi>();
+            using (var context = new TmgContext())
+            {
+                tamagotchis = context.Tamagotchis.ToList();
+            }
+            bool found = false;
+            foreach (Tamagotchi item in tamagotchis)
+            {
+                if (item.Naam.Equals("Yolo"))
+                {
+                    found = true;
+                    _curTamagotchi = item;
+                }
+            }
+
             action.ToLower();
             IAction actie;
             switch (action)
@@ -51,7 +68,11 @@ namespace Tamagotchi_WCF
                     break;
             }
             if (actie == null) return "onjuiste command";
-            return actie.Act();
+            else if (_curTamagotchi != null)
+            {
+                return actie.Act(_curTamagotchi);
+            }
+            else return "Geen Tamagotchi geselecteerd";
         }
 
         public List<string> GetTamagotchis()
@@ -71,7 +92,24 @@ namespace Tamagotchi_WCF
 
         public string ChooseTamagotchi(string name)
         {
-            throw new NotImplementedException();
+            _curTamagotchi = new Tamagotchi();
+            List<Tamagotchi> tamagotchis = new List<Tamagotchi>();
+            using (var context = new TmgContext()) 
+            { 
+                tamagotchis = context.Tamagotchis.ToList();
+            }
+            bool found = false;
+            foreach (Tamagotchi item in tamagotchis)
+            {
+                if (item.Naam.Equals(name))
+                {
+                    found = true;
+                    _curTamagotchi = item;
+                }
+            }
+            if (found) return ("Je speelt nu met " + name + ".");
+            else { return "Deze Tamagotchi bestaat niet..."; }
+
         }
 
         public string CreateTamagotchi(string name)
