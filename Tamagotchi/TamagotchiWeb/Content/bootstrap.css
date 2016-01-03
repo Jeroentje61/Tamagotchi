@@ -4191,6 +4191,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
 }
 
+.navbar-backgrnd{
+    color: #28f300;
+}
 .navbar-brand {
   float: left;
   padding: 15px 15px;
