@@ -32,7 +32,7 @@ namespace TamagotchiWeb.Controllers
             service.CreateTamagotchi(Name);
             return RedirectToAction("Add");
         }
-        public ActionResult About()
+        public ActionResult Tamagotchi()
         {
             ViewBag.Message = "Your application description page.";
             return View();

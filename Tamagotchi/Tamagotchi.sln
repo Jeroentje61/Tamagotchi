@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamagotchi", "Tamagotchi\Tamagotchi.csproj", "{50C63311-A575-443B-9AC9-9948269F1C05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamagotchiWeb", "TamagotchiWeb\TamagotchiWeb.csproj", "{A4347170-4DEC-4A52-B4D7-A791AC1F6FBF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7} = {E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamagotchiWeb.Tests", "TamagotchiWeb.Tests\TamagotchiWeb.Tests.csproj", "{62187578-6932-487B-82B9-850693963623}"
 EndProject

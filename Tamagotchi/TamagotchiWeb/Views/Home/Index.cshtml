@@ -26,7 +26,11 @@
     {
         <tr>
             
-            <td><button name="TamagotchiID">@item</button></td>
+            <td>
+                @using (Html.BeginForm("Tamagotchi", "Home")) { 
+            <button name="TamagotchiID">@item</button>
+            }
+            </td>
         </tr>
     }
     </table>
