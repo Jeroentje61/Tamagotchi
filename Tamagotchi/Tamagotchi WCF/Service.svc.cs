@@ -13,36 +13,21 @@ namespace Tamagotchi_WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : ITamagotchiService
     {
-        private Tamagotchi _curTamagotchi { get; set; }
 
         public int[] GetStatusses()
         {
             int[] stats = new int[4];
-            stats[0] = _curTamagotchi.Hunger;
-            stats[1] = _curTamagotchi.Sleep;
-            stats[2] = _curTamagotchi.Boredom;
-            stats[3] = _curTamagotchi.Health;
+            //stats[0] = _curTamagotchi.Hunger;
+            //stats[1] = _curTamagotchi.Sleep;
+            //stats[2] = _curTamagotchi.Boredom;
+            //stats[3] = _curTamagotchi.Health;
 
             return stats;
         }
 
-        public string PerformAction(string action)
+        public string PerformAction(string action, Tamagotchi tmg)
         {
-            _curTamagotchi = new Tamagotchi();
-            List<Tamagotchi> tamagotchis = new List<Tamagotchi>();
-            using (var context = new TmgContext())
-            {
-                tamagotchis = context.Tamagotchis.ToList();
-            }
-            bool found = false;
-            foreach (Tamagotchi item in tamagotchis)
-            {
-                if (item.Naam.Equals("Yolo"))
-                {
-                    found = true;
-                    _curTamagotchi = item;
-                }
-            }
+            if (tmg.AccesGranted > DateTime.Now) return ("Je Tamagotchi is nog bezig. Je kan weer iets doen over: " + (tmg.AccesGranted - DateTime.Now));
 
             action.ToLower();
             IAction actie;
@@ -68,31 +53,22 @@ namespace Tamagotchi_WCF
                     break;
             }
             if (actie == null) return "onjuiste command";
-            else if (_curTamagotchi != null)
-            {
-                return actie.Act(_curTamagotchi);
-            }
-            else return "Geen Tamagotchi geselecteerd";
+            return actie.Act(tmg);
         }
 
-        public List<string> GetTamagotchis()
+        public List<Tamagotchi> GetTamagotchis()
         {
-            List<string> lijst = new List<string>();
+            List<Tamagotchi> lijst = new List<Tamagotchi>();
             using (var context = new TmgContext())
             {
-                List<Tamagotchi> temp = context.Tamagotchis.ToList();
-                foreach (Tamagotchi item in temp)
-                {
-                    lijst.Add(item.Naam);
-                }
+                lijst = context.Tamagotchis.ToList();                
             }
-
             return lijst;
         }
 
-        public string ChooseTamagotchi(string name)
+        public Tamagotchi ChooseTamagotchi(string name)
         {
-            _curTamagotchi = new Tamagotchi();
+            Tamagotchi tmg = new Tamagotchi();
             List<Tamagotchi> tamagotchis = new List<Tamagotchi>();
             using (var context = new TmgContext()) 
             { 
@@ -104,21 +80,24 @@ namespace Tamagotchi_WCF
                 if (item.Naam.Equals(name))
                 {
                     found = true;
-                    _curTamagotchi = item;
+                    tmg = item;
                 }
             }
-            if (found) return ("Je speelt nu met " + name + ".");
-            else { return "Deze Tamagotchi bestaat niet..."; }
+            if (found) return tmg;
+            else { return null; }
 
         }
 
-        public string CreateTamagotchi(string name)
+        public Tamagotchi CreateTamagotchi(string name)
         {
-            name.ToLower();
-            if (name == "nee") return "Je hebt ervoor gekozen geen Tamagotchi aan te maken";
+            Tamagotchi tmg = new Tamagotchi();
+            if (name == "nee") return null;
             using (var context = new TmgContext())
             {
-                context.Tamagotchis.Add(new Tamagotchi()
+                context.Tamagotchis.Add(
+                    
+                    
+                tmg =  new Tamagotchi()
                 {
                     Naam = name,
                     Hunger = 0,
@@ -127,7 +106,8 @@ namespace Tamagotchi_WCF
                     Health = 0                    
                 });
                 context.SaveChanges();
-                return ("Je Tamagotchi " + name + " is aangemaakt!");
+                
+                return tmg;
             }
 
         }

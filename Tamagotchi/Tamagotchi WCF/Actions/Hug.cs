@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -23,6 +24,7 @@ namespace Tamagotchi_WCF.Actions
                 tmg.Health -= 10;
                 tmg.LastAcces = DateTime.Now;
                 tmg.AccesGranted = DateTime.Now.AddSeconds(60);
+                context.Entry(tmg).State = EntityState.Modified;
                 context.SaveChanges();
             }
 

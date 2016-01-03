@@ -12,6 +12,7 @@ namespace TamagotchiConsole
         static void Main(string[] args)
         {
             TamagotchiService.ITamagotchiService service = new TamagotchiService.TamagotchiServiceClient();
+            TamagotchiService.Tamagotchi tmg;
 
             Console.WriteLine("Welkom!");
             Console.WriteLine("Wil je een nieuwe Tamagotchi aanmaken of een bestaande Tamagotchi kiezen? (nieuw||bestaand)");
@@ -19,16 +20,18 @@ namespace TamagotchiConsole
             {
                 Console.WriteLine("Typ de naam van je nieuwe Tamagotchi in. (of typ nee om te annuleren)");
                 string antwoord = Console.ReadLine();
-                service.CreateTamagotchi(antwoord);
+                tmg = service.CreateTamagotchi(antwoord);
+                if (tmg != null) { Console.WriteLine("Je Tamagotchi " + tmg.Naam + " is aangemaakt!"); }
+                else { Console.WriteLine("Er is geen Tamagotchi aangemaakt"); }
             }
             else
             {
                 Console.WriteLine("Kies een van de volgende Tamagotchis door zijn/haar naam in te typen...");
                 if (service.GetTamagotchis() != null)
                 {
-                    foreach (string item in service.GetTamagotchis())
+                    foreach (TamagotchiService.Tamagotchi item in service.GetTamagotchis())
                     {
-                        Console.Write(item + ", ");
+                        Console.Write(item.Naam + ", ");
                     }
                     Console.WriteLine();
                 }
@@ -41,8 +44,12 @@ namespace TamagotchiConsole
             }
             string naam = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine();            
-            Console.WriteLine(service.ChooseTamagotchi(naam));
+            Console.WriteLine();
+            tmg = service.ChooseTamagotchi(naam);
+            naam = tmg.Naam;
+            
+            if (naam != null) { Console.WriteLine("Je speelt nu met " + naam);}
+            else { Console.WriteLine("Deze Tamagotchi is niet gevonden...");}
            
             
 
@@ -52,7 +59,7 @@ namespace TamagotchiConsole
             while (true)
             {
                 string command = Console.ReadLine();
-                Console.WriteLine(service.PerformAction(command));
+                Console.WriteLine(service.PerformAction(command, tmg));
             }
             
         }

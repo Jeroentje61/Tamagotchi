@@ -14,19 +14,19 @@ namespace Tamagotchi_WCF
     public interface ITamagotchiService
     {
         [OperationContract]
-        List<string> GetTamagotchis();
+        List<Tamagotchi> GetTamagotchis();
 
         [OperationContract]
-        string ChooseTamagotchi(string name);
+        Tamagotchi ChooseTamagotchi(string name);
 
         [OperationContract]
         int[] GetStatusses();
 
         [OperationContract]
-        string PerformAction(string action);
+        string PerformAction(string action, Tamagotchi tmg);
         
         [OperationContract]
-        string CreateTamagotchi(string name);
+        Tamagotchi CreateTamagotchi(string name);
 
 
     }

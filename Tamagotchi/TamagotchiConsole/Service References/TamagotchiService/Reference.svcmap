@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4d1c1fcb-b7ed-4085-8b9b-b9dc422919a4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c17d99ca-d816-418e-8b05-39c9fa02bb15" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,12 @@
     <MetadataSource Address="http://tamagotchiniels.azurewebsites.net/service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="48da0041-f087-4e56-9e87-9e40495c5cf0" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="f29199ed-87a6-47c1-b385-4b2cf9a3c027" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="0ad982e5-1df4-4a05-992b-92f15fce9a9a" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?wsdl" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="5f492eb6-4b47-41ee-ae86-f8bfeff5bca6" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?disco" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="7b8b15e6-3772-459a-b7b8-8bffc173376e" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="0fb18355-0e00-47c7-aca5-7bdda1dfe92c" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="76d109ff-53d8-40a2-9ff0-7b7ce22e038b" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="9e74a72e-720a-466d-874a-0e7c68672f56" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="afd218b3-1354-4793-ac1a-0aaa281416d8" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="e13f5dea-c69a-464a-9e30-05285b8fa2a8" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="c318cdf8-8fd8-45fd-ba48-317b368827f2" SourceId="1" SourceUrl="http://tamagotchiniels.azurewebsites.net/Service.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
