@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,6 @@ namespace Tamagotchi_WCF.Actions
     {
         private int _timespan = 30;
         private string _message = "Je Tamagotchi is aan het eten. Dit duurt 30 seconden.";
-        private Tamagotchi _tamagotchi;
 
         public Eat()
         {
@@ -28,6 +28,9 @@ namespace Tamagotchi_WCF.Actions
             using (var context = new TmgContext())
             {
                 tmg.Hunger = 0;
+                tmg.LastAcces = DateTime.Now;
+                tmg.AccesGranted = DateTime.Now.AddSeconds(30);
+                context.Entry(tmg).State = EntityState.Modified;
                 context.SaveChanges();
             }            
             

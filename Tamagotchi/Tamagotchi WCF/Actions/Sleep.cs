@@ -18,6 +18,14 @@ namespace Tamagotchi_WCF.Actions
         {
             //set cooldown op 3600 seconden.
             //sleep wordt 0;
+            using (var context = new TmgContext())
+            {
+                tmg.Sleep = 0;
+                tmg.LastAcces = DateTime.Now;
+                tmg.AccesGranted = DateTime.Now.AddHours(1);
+                context.SaveChanges();
+            }
+
             return _message;
         }
     }

@@ -18,6 +18,14 @@ namespace Tamagotchi_WCF.Actions
         {
             //set cooldown op 60 seconden.
             //health - 10;
+            using (var context = new TmgContext())
+            {
+                tmg.Health -= 10;
+                tmg.LastAcces = DateTime.Now;
+                tmg.AccesGranted = DateTime.Now.AddSeconds(60);
+                context.SaveChanges();
+            }
+
             return _message;
         }
     }
