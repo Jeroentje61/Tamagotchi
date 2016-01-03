@@ -14,7 +14,7 @@ namespace Tamagotchi_WCF.Actions
             get { return _timespan; }
         }
 
-        public string Act()
+        public string Act(Tamagotchi tmg)
         {
             //set cooldown op 30 seconden.
             //boredom - 10;
