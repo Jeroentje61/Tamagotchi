@@ -28,7 +28,7 @@ namespace TamagotchiWeb.Controllers
     [HttpPost]
         public ActionResult Add(string Name)
         {
-            String bert = Name;
+            
             service.CreateTamagotchi(Name);
             return RedirectToAction("Add");
         }
