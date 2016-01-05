@@ -1,5 +1,5 @@
 ﻿@using TamagotchiWeb.ServiceReference1;
-@model TamagotchiWeb.Controllers.HomeController
+@model Tamagotchi
 @{
     ViewBag.Title = "Home Page";
 }
@@ -9,10 +9,12 @@
 <img src="~/Content/Images/Boredom.png" alt="Sample Image" />
 <img src="~/Content/Images/Health.png" alt="Sample Image" />
 <p>
+
     Nieuwe Tamagotchi Toevoegen:
-<input type="text" name="Naam"/>
 @using (Html.BeginForm("Add", "Home", FormMethod.Post))
-    {
+{
+    @Html.TextBoxFor(model => model.Naam)
+
     
     <button type="submit">Add</button>
 }
@@ -34,14 +36,12 @@
                 @using (Html.BeginForm("Tamagotchi", "Home")) { 
             <button name="TamagotchiID">@item.Naam</button>
                 }
-                </td>
-                
+                </td>               
 <td> @item.Hunger</td>
     <td>@item.Sleep</td>
     <td>@item.Boredom</td>
     <td>@item.Health</td>
-                
-            
+                           
         </tr>
     }
     </table>

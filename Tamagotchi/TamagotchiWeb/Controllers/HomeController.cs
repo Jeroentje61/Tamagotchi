@@ -31,13 +31,13 @@ namespace TamagotchiWeb.Controllers
     [HttpPost]
         public ActionResult Add(string Naam)
         {
-            String bert = Naam;
             service.CreateTamagotchi(Naam);
             return RedirectToAction(Naam);
         }
-        public ActionResult Tamagotchi(string Name)
+    public ActionResult Tamagotchi(string TamagotchiID)
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = TamagotchiID;
+
             //service.ChooseTamagotchi(Name);
             return View();
         }
