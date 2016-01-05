@@ -103,7 +103,10 @@ namespace Tamagotchi_WCF
                     Hunger = 0,
                     Sleep = 0,
                     Boredom = 0,
-                    Health = 0                    
+                    Health = 0,
+                    LastAcces = DateTime.Now,
+                    AccesGranted = DateTime.Now
+
                 });
                 context.SaveChanges();
                 

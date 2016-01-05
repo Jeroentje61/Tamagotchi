@@ -9,23 +9,182 @@
 //------------------------------------------------------------------------------
 
 namespace TamagotchiWeb.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tamagotchi", Namespace="http://schemas.datacontract.org/2004/07/Tamagotchi_WCF")]
+    [System.SerializableAttribute()]
+    public partial class Tamagotchi : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime AccesGrantedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BoredomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HealthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HungerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastAccesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NaamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SleepField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime AccesGranted {
+            get {
+                return this.AccesGrantedField;
+            }
+            set {
+                if ((this.AccesGrantedField.Equals(value) != true)) {
+                    this.AccesGrantedField = value;
+                    this.RaisePropertyChanged("AccesGranted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Boredom {
+            get {
+                return this.BoredomField;
+            }
+            set {
+                if ((this.BoredomField.Equals(value) != true)) {
+                    this.BoredomField = value;
+                    this.RaisePropertyChanged("Boredom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Health {
+            get {
+                return this.HealthField;
+            }
+            set {
+                if ((this.HealthField.Equals(value) != true)) {
+                    this.HealthField = value;
+                    this.RaisePropertyChanged("Health");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Hunger {
+            get {
+                return this.HungerField;
+            }
+            set {
+                if ((this.HungerField.Equals(value) != true)) {
+                    this.HungerField = value;
+                    this.RaisePropertyChanged("Hunger");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LastAcces {
+            get {
+                return this.LastAccesField;
+            }
+            set {
+                if ((this.LastAccesField.Equals(value) != true)) {
+                    this.LastAccesField = value;
+                    this.RaisePropertyChanged("LastAcces");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Naam {
+            get {
+                return this.NaamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NaamField, value) != true)) {
+                    this.NaamField = value;
+                    this.RaisePropertyChanged("Naam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Sleep {
+            get {
+                return this.SleepField;
+            }
+            set {
+                if ((this.SleepField.Equals(value) != true)) {
+                    this.SleepField = value;
+                    this.RaisePropertyChanged("Sleep");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITamagotchiService")]
     public interface ITamagotchiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetTamagotchisResponse")]
-        string[] GetTamagotchis();
+        TamagotchiWeb.ServiceReference1.Tamagotchi[] GetTamagotchis();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetTamagotchisResponse")]
-        System.Threading.Tasks.Task<string[]> GetTamagotchisAsync();
+        System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi[]> GetTamagotchisAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse")]
-        string ChooseTamagotchi(string name);
+        TamagotchiWeb.ServiceReference1.Tamagotchi ChooseTamagotchi(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse")]
-        System.Threading.Tasks.Task<string> ChooseTamagotchiAsync(string name);
+        System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi> ChooseTamagotchiAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetStatusses", ReplyAction="http://tempuri.org/ITamagotchiService/GetStatussesResponse")]
         int[] GetStatusses();
@@ -34,16 +193,16 @@ namespace TamagotchiWeb.ServiceReference1 {
         System.Threading.Tasks.Task<int[]> GetStatussesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/PerformAction", ReplyAction="http://tempuri.org/ITamagotchiService/PerformActionResponse")]
-        string PerformAction(string action);
+        string PerformAction(string action, TamagotchiWeb.ServiceReference1.Tamagotchi tmg);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/PerformAction", ReplyAction="http://tempuri.org/ITamagotchiService/PerformActionResponse")]
-        System.Threading.Tasks.Task<string> PerformActionAsync(string action);
+        System.Threading.Tasks.Task<string> PerformActionAsync(string action, TamagotchiWeb.ServiceReference1.Tamagotchi tmg);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/CreateTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/CreateTamagotchiResponse")]
-        string CreateTamagotchi(string name);
+        TamagotchiWeb.ServiceReference1.Tamagotchi CreateTamagotchi(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/CreateTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/CreateTamagotchiResponse")]
-        System.Threading.Tasks.Task<string> CreateTamagotchiAsync(string name);
+        System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi> CreateTamagotchiAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,19 +232,19 @@ namespace TamagotchiWeb.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string[] GetTamagotchis() {
+        public TamagotchiWeb.ServiceReference1.Tamagotchi[] GetTamagotchis() {
             return base.Channel.GetTamagotchis();
         }
         
-        public System.Threading.Tasks.Task<string[]> GetTamagotchisAsync() {
+        public System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi[]> GetTamagotchisAsync() {
             return base.Channel.GetTamagotchisAsync();
         }
         
-        public string ChooseTamagotchi(string name) {
+        public TamagotchiWeb.ServiceReference1.Tamagotchi ChooseTamagotchi(string name) {
             return base.Channel.ChooseTamagotchi(name);
         }
         
-        public System.Threading.Tasks.Task<string> ChooseTamagotchiAsync(string name) {
+        public System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi> ChooseTamagotchiAsync(string name) {
             return base.Channel.ChooseTamagotchiAsync(name);
         }
         
@@ -97,19 +256,19 @@ namespace TamagotchiWeb.ServiceReference1 {
             return base.Channel.GetStatussesAsync();
         }
         
-        public string PerformAction(string action) {
-            return base.Channel.PerformAction(action);
+        public string PerformAction(string action, TamagotchiWeb.ServiceReference1.Tamagotchi tmg) {
+            return base.Channel.PerformAction(action, tmg);
         }
         
-        public System.Threading.Tasks.Task<string> PerformActionAsync(string action) {
-            return base.Channel.PerformActionAsync(action);
+        public System.Threading.Tasks.Task<string> PerformActionAsync(string action, TamagotchiWeb.ServiceReference1.Tamagotchi tmg) {
+            return base.Channel.PerformActionAsync(action, tmg);
         }
         
-        public string CreateTamagotchi(string name) {
+        public TamagotchiWeb.ServiceReference1.Tamagotchi CreateTamagotchi(string name) {
             return base.Channel.CreateTamagotchi(name);
         }
         
-        public System.Threading.Tasks.Task<string> CreateTamagotchiAsync(string name) {
+        public System.Threading.Tasks.Task<TamagotchiWeb.ServiceReference1.Tamagotchi> CreateTamagotchiAsync(string name) {
             return base.Channel.CreateTamagotchiAsync(name);
         }
     }

@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamagotchi", "Tamagotchi\Tamagotchi.csproj", "{50C63311-A575-443B-9AC9-9948269F1C05}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamagotchiWeb", "TamagotchiWeb\TamagotchiWeb.csproj", "{A4347170-4DEC-4A52-B4D7-A791AC1F6FBF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7} = {E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7}
@@ -19,16 +17,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamagotchiConsole", "Tamago
 		{E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7} = {E6CCD007-41DF-46A8-AFD1-AFFDEA95EAC7}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTest", "ServiceTest\ServiceTest.csproj", "{7850B69D-F524-45D5-9D6F-3728EB2B9380}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{50C63311-A575-443B-9AC9-9948269F1C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50C63311-A575-443B-9AC9-9948269F1C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50C63311-A575-443B-9AC9-9948269F1C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50C63311-A575-443B-9AC9-9948269F1C05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4347170-4DEC-4A52-B4D7-A791AC1F6FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4347170-4DEC-4A52-B4D7-A791AC1F6FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4347170-4DEC-4A52-B4D7-A791AC1F6FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{12EFD68D-30A0-410F-A60F-896E885E2958}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12EFD68D-30A0-410F-A60F-896E885E2958}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12EFD68D-30A0-410F-A60F-896E885E2958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7850B69D-F524-45D5-9D6F-3728EB2B9380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7850B69D-F524-45D5-9D6F-3728EB2B9380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7850B69D-F524-45D5-9D6F-3728EB2B9380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7850B69D-F524-45D5-9D6F-3728EB2B9380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

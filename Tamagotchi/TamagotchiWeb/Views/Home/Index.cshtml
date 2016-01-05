@@ -1,4 +1,5 @@
 ﻿@using TamagotchiWeb.ServiceReference1;
+@model Tamagotchi
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,10 +9,12 @@
 <img src="~/Content/Images/Boredom.png" alt="Sample Image" />
 <img src="~/Content/Images/Health.png" alt="Sample Image" />
 <p>
+
     Nieuwe Tamagotchi Toevoegen:
-@Html.TextBox("Name")
 @using (Html.BeginForm("Add", "Home", FormMethod.Post))
-    {
+{
+    @Html.TextBoxFor(model => model.Naam)
+
     
     <button type="submit">Add</button>
 }
@@ -20,17 +23,28 @@
 <table border="1" width="25%">
     <tr>
         <th>Naam</th>
-        <th>Status</th>
+        <th>Honger</th>
+        <th>Slaap</th>
+        <th>Verveeldheid</th>
+        <th>Gezondheid</th>
     </tr>
     @foreach (var item in ViewBag.Tamagotchis)
     {
         <tr>
             
             <td>
-                @using (Html.BeginForm("Tamagotchi", "Home")) { 
-            <button name="TamagotchiID">@item</button>
-            }
-            </td>
+                @using (Html.BeginForm("Tamagotchi", "Home", FormMethod.Post))
+                {
+                 
+            <button name="TamagotchiID" value ="@item.Naam">@item.Naam</button>
+                    
+                }
+                </td>               
+<td> @item.Hunger</td>
+    <td>@item.Sleep</td>
+    <td>@item.Boredom</td>
+    <td>@item.Health</td>
+                           
         </tr>
     }
     </table>

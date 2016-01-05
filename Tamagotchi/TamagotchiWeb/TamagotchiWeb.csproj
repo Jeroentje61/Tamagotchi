@@ -192,6 +192,12 @@
     <None Include="Service References\ServiceReference1\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference1\Service3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ServiceReference1\TamagotchiWeb.ServiceReference1.Tamagotchi.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Resource Include="Content\Images\Boredom.png" />
     <Resource Include="Content\Images\Health.png" />
     <Resource Include="Content\Images\Hunger.png" />
