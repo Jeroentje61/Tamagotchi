@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using TamagotchiWeb.Models;
 
 namespace TamagotchiWeb.Controllers
@@ -38,6 +38,13 @@ namespace TamagotchiWeb.Controllers
     public ActionResult Tamagotchi(string TamagotchiID)
         {
             ViewBag.Naam = TamagotchiID;
+            ViewBag.Hunger = service.ChooseTamagotchi(TamagotchiID).Hunger;
+            ViewBag.Sleep = service.ChooseTamagotchi(TamagotchiID).Sleep;
+            ViewBag.Boredom = service.ChooseTamagotchi(TamagotchiID).Boredom;
+            ViewBag.Health = service.ChooseTamagotchi(TamagotchiID).Health;
+
+            ViewBag.StatusImg = "~/Content/Images/Hunger.png";
+
             return View();
         }
 
