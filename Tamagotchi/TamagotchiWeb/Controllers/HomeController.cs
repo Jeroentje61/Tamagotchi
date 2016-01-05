@@ -34,11 +34,10 @@ namespace TamagotchiWeb.Controllers
             service.CreateTamagotchi(Naam);
             return RedirectToAction(Naam);
         }
+        [HttpPost]
     public ActionResult Tamagotchi(string TamagotchiID)
         {
-            ViewBag.Message = TamagotchiID;
-
-            //service.ChooseTamagotchi(Name);
+            ViewBag.Naam = TamagotchiID;
             return View();
         }
 
