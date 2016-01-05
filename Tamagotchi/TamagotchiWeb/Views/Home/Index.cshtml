@@ -33,8 +33,11 @@
         <tr>
             
             <td>
-                @using (Html.BeginForm("Tamagotchi", "Home")) { 
-            <button name="TamagotchiID">@item.Naam</button>
+                @using (Html.BeginForm("Tamagotchi", "Home", FormMethod.Post))
+                {
+                 
+            <button name="TamagotchiID" value ="@item.Naam">@item.Naam</button>
+                    
                 }
                 </td>               
 <td> @item.Hunger</td>
