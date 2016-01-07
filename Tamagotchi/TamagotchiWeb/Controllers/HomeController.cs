@@ -32,7 +32,7 @@ namespace TamagotchiWeb.Controllers
         public ActionResult Add(string Naam)
         {
             service.CreateTamagotchi(Naam);
-            return RedirectToAction(Naam);
+            return RedirectToAction("Index");
         }
         [HttpPost]
     public ActionResult Tamagotchi(string TamagotchiID)
@@ -43,8 +43,10 @@ namespace TamagotchiWeb.Controllers
             ViewBag.Boredom = service.ChooseTamagotchi(TamagotchiID).Boredom;
             ViewBag.Health = service.ChooseTamagotchi(TamagotchiID).Health;
 
-            ViewBag.StatusImg = "~/Content/Images/Hunger.png";
-
+      
+            
+            ViewBag.StatusImg = Url.Content("~/Content/Images/Hunger.png");
+            String img = ViewBag.StatusImg;
             return View();
         }
 
