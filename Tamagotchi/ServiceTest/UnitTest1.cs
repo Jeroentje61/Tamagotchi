@@ -1,23 +1,31 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tamagotchi_WCF;
+using Moq;
+using System.Data.Entity;
 
 namespace ServiceTest
 {
     [TestClass]
     public class UnitTest1
     {
+        
         Service service = new Service();
-        Tamagotchi tmgtest = new Tamagotchi()
+        
+        public Tamagotchi GetTamagotchi()
         {
-            Naam = "Henk",
-            Hunger = 0,
-            Sleep = 0,
-            Boredom = 0,
-            Health = 0,
-            LastAcces = DateTime.MinValue,
-            AccesGranted = DateTime.MinValue
-        };
+            Tamagotchi tmgtest = new Tamagotchi()
+            {
+                Naam = "Henk",
+                Hunger = 0,
+                Sleep = 0,
+                Boredom = 0,
+                Health = 0,
+                LastAcces = DateTime.MinValue,
+                AccesGranted = DateTime.MinValue
+            };
+            return tmgtest;
+        }
 
         [TestMethod]
         public void GetTamagotchiTest()
@@ -28,6 +36,7 @@ namespace ServiceTest
         public void CreateTamagotchiTest()
         {
             //Arrange
+            
             string name = "BlaBla";
             Tamagotchi tmg;
             //Act
@@ -42,6 +51,7 @@ namespace ServiceTest
             //Arrange
             string actie = "sleep";
             string result;
+            Tamagotchi tmgtest = GetTamagotchi();
 
             //Act
             result = service.PerformAction(actie, tmgtest);
