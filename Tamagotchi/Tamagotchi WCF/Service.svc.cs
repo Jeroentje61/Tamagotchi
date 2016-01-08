@@ -105,8 +105,8 @@ namespace Tamagotchi_WCF
                     Boredom = 0,
                     Health = 0,
                     LastAcces = DateTime.Now,
-                    AccesGranted = DateTime.Now
-
+                    AccesGranted = DateTime.Now,
+                    Alive = true
                 });
                 context.SaveChanges();
                 
