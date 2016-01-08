@@ -12,8 +12,11 @@ namespace Tamagotchi_WCF.Spelregels
         {
             if (tmg.Health < 20)
             {
-                //TODO
-                //JE KAN NIET DOOD
+                tmg.TopAtleet = true;
+            }
+            else
+            {
+                tmg.TopAtleet = false;
             }
             using (var context = new TmgContext())
             {

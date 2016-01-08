@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -10,17 +11,12 @@ using Tamagotchi_WCF.Spelregels;
 
 namespace Tamagotchi_WCF
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : ITamagotchiService
     {
         private List<ISpelregel> _spelregels;
         public Service()
         {
             _spelregels = new List<Spelregels.ISpelregel>();
-            _spelregels.Add(new Crazy());
-            _spelregels.Add(new Slaaptekort());
-            
             _spelregels.Add(new Honger());
             _spelregels.Add(new Isolatie());
             _spelregels.Add(new Vermoeidheid());
@@ -55,7 +51,33 @@ namespace Tamagotchi_WCF
                     break;
             }
             if (actie == null) return "onjuiste command";
-            return actie.Act(tmg);
+            string crazy = "";
+            if (tmg.Crazy)
+            {
+                if (!RollTheDice(tmg, out crazy)) return crazy;
+            }
+            return actie.Act(tmg) + crazy;
+        }
+
+        private bool RollTheDice(Tamagotchi tmg, out string crazy)
+        {
+            Random r = new Random();
+            int chance = r.Next(1);
+            if (chance == 0)
+            {
+                crazy = "Je Tamagotchi is Crazy, maar heeft dit maal geluk!";
+                return true;
+            }
+            else if (tmg.TopAtleet)
+            {
+                crazy = "Doordat je Tamagotchi zo super sportief is, is hij blijven leven!";
+                return true;
+            }
+            else
+            {
+                crazy = "Je Crazy Tamagotchi is helaas overleden door zijn dolle acties... R.I.P.";
+                return false;
+            }
         }
 
         public List<Tamagotchi> GetTamagotchis()
@@ -71,17 +93,22 @@ namespace Tamagotchi_WCF
 
         public void DoSpelregels(List<Tamagotchi> tmgs)
         {
-            foreach (Tamagotchi tmg in tmgs)
+            using (var context = new TmgContext())
             {
-                if (tmg.Alive)
+                foreach (Tamagotchi tmg in tmgs)
                 {
-                    foreach ( ISpelregel spelregel in _spelregels)
+                    if (tmg.Alive)
                     {
-                        spelregel.ExecuteSpelregel(tmg);
+                        foreach (ISpelregel spelregel in _spelregels)
+                        {
+                            spelregel.ExecuteSpelregel(tmg);
+                        }
+                        tmg.LastAcces = DateTime.Now;
                     }
-                    
+                    context.Entry(tmg).State = EntityState.Modified;
                 }
-            }
+                context.SaveChanges();
+            }            
         }
 
         public List<Tamagotchi> GetLivingTamagotchis()
@@ -122,9 +149,7 @@ namespace Tamagotchi_WCF
             using (var context = new TmgContext())
             {
                 context.Tamagotchis.Add(
-                    
-                    
-                tmg =  new Tamagotchi()
+                    tmg =  new Tamagotchi()
                 {
                     Naam = name,
                     Hunger = 0,
@@ -133,7 +158,10 @@ namespace Tamagotchi_WCF
                     Health = 0,
                     LastAcces = DateTime.Now,
                     AccesGranted = DateTime.Now,
-                    Alive = true
+                    Alive = true,
+                    Crazy = false,
+                    Munchies = false,
+                    TopAtleet = true
                 });
                 context.SaveChanges();
                 

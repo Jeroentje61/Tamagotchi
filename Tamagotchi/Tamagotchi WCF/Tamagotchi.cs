@@ -20,7 +20,9 @@ namespace Tamagotchi_WCF
         public int Health { get; set; }
         public DateTime AccesGranted { get; set; }
         public DateTime LastAcces { get; set; }
-        public bool Alive { get; set; }
-
+        public bool Alive { get ; set; }
+        public bool Crazy { get; set; }
+        public bool Munchies { get; set; }
+        public bool TopAtleet { get; set; }
     }
 }

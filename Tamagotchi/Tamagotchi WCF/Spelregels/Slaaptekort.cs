@@ -10,7 +10,7 @@ namespace Tamagotchi_WCF.Spelregels
     {
         public Tamagotchi ExecuteSpelregel(Tamagotchi tmg)
         {
-            if (tmg.Sleep == 100)
+            if (tmg.Sleep >= 100)
             {
                 tmg.Alive = false;
             }

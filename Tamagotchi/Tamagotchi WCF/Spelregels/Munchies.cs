@@ -12,8 +12,11 @@ namespace Tamagotchi_WCF.Spelregels
         {
             if (tmg.Boredom > 80)
             {
-                //TODO
-                //HUNGER x2
+                tmg.Munchies = true;
+            }
+            else
+            {
+                tmg.Munchies = false;
             }
             using (var context = new TmgContext())
             {

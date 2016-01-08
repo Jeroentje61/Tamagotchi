@@ -10,10 +10,10 @@ namespace Tamagotchi_WCF.Spelregels
     {
         public Tamagotchi ExecuteSpelregel(Tamagotchi tmg)
         {
-            TimeSpan Difference = tmg.LastAcces - DateTime.Now;
+            TimeSpan Difference = DateTime.Now - tmg.LastAcces;
             int HoursPassed = (int)Difference.TotalHours;
-            tmg.Health += (HoursPassed * 5);
-            tmg.LastAcces = DateTime.Now;
+            tmg.Sleep += (HoursPassed * 5);
+            if (tmg.Sleep >= 100) { tmg.Sleep = 100; Slaaptekort tekort = new Slaaptekort(); tmg = tekort.ExecuteSpelregel(tmg); }
             using (var context = new TmgContext())
             {
                 context.Entry(tmg).State = EntityState.Modified;

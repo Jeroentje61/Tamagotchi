@@ -10,10 +10,11 @@ namespace Tamagotchi_WCF.Spelregels
     {
         public Tamagotchi ExecuteSpelregel(Tamagotchi tmg)
         {
-            TimeSpan Difference = tmg.LastAcces - DateTime.Now;
+            TimeSpan Difference = DateTime.Now - tmg.LastAcces;
             int HoursPassed = (int)Difference.TotalHours;
             tmg.Boredom += (HoursPassed * 15);
-            tmg.LastAcces = DateTime.Now;
+            if (tmg.Boredom >= 100) { tmg.Boredom = 100; }
+            if (tmg.Boredom >= 80) { Munchies munchies = new Munchies(); tmg = munchies.ExecuteSpelregel(tmg); }
             using (var context = new TmgContext())
             {
                 context.Entry(tmg).State = EntityState.Modified;

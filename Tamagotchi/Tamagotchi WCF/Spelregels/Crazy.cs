@@ -10,10 +10,13 @@ namespace Tamagotchi_WCF.Spelregels
     {
         public Tamagotchi ExecuteSpelregel(Tamagotchi tmg)
         {
-            if (tmg.Health == 100)
+            if (tmg.Health >= 100)
             {
-                //TODO
-                //IEDERE ACTIE 50% KANS OP DOOD
+                tmg.Crazy = true;
+            }
+            else
+            {
+                tmg.Crazy = false;
             }
             using (var context = new TmgContext())
             {
