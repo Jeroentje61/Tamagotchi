@@ -182,6 +182,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\TamagotchiJN.pubxml" />
     <None Include="Service References\ServiceReference1\Service.wsdl" />
     <None Include="Service References\ServiceReference1\Service.xsd">
       <SubType>Designer</SubType>
