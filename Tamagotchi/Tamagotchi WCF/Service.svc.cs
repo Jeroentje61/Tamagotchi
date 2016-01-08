@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Tamagotchi_WCF.Actions;
+using Tamagotchi_WCF.Spelregels;
 
 namespace Tamagotchi_WCF
 {
@@ -13,16 +14,17 @@ namespace Tamagotchi_WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service : ITamagotchiService
     {
-
-        public int[] GetStatusses()
+        private List<ISpelregel> _spelregels;
+        public Service()
         {
-            int[] stats = new int[4];
-            //stats[0] = _curTamagotchi.Hunger;
-            //stats[1] = _curTamagotchi.Sleep;
-            //stats[2] = _curTamagotchi.Boredom;
-            //stats[3] = _curTamagotchi.Health;
-
-            return stats;
+            _spelregels = new List<Spelregels.ISpelregel>();
+            _spelregels.Add(new Crazy());
+            _spelregels.Add(new Slaaptekort());
+            
+            _spelregels.Add(new Honger());
+            _spelregels.Add(new Isolatie());
+            _spelregels.Add(new Vermoeidheid());
+            _spelregels.Add(new Verveling());
         }
 
         public string PerformAction(string action, Tamagotchi tmg)
@@ -63,17 +65,43 @@ namespace Tamagotchi_WCF
             {
                 lijst = context.Tamagotchis.ToList();                
             }
+            DoSpelregels(lijst);
+            return lijst;
+        }
+
+        public void DoSpelregels(List<Tamagotchi> tmgs)
+        {
+            foreach (Tamagotchi tmg in tmgs)
+            {
+                if (tmg.Alive)
+                {
+                    foreach ( ISpelregel spelregel in _spelregels)
+                    {
+                        spelregel.ExecuteSpelregel(tmg);
+                    }
+                    
+                }
+            }
+        }
+
+        public List<Tamagotchi> GetLivingTamagotchis()
+        {
+                List<Tamagotchi> lijst = new List<Tamagotchi>();
+                List<Tamagotchi> templist = GetTamagotchis();
+                foreach (Tamagotchi item in templist)
+                {
+                    if (item.Alive)
+                    {
+                        lijst.Add(item);
+                    }
+                }            
             return lijst;
         }
 
         public Tamagotchi ChooseTamagotchi(string name)
         {
             Tamagotchi tmg = new Tamagotchi();
-            List<Tamagotchi> tamagotchis = new List<Tamagotchi>();
-            using (var context = new TmgContext()) 
-            { 
-                tamagotchis = context.Tamagotchis.ToList();
-            }
+            List<Tamagotchi> tamagotchis = GetTamagotchis();
             bool found = false;
             foreach (Tamagotchi item in tamagotchis)
             {
@@ -85,7 +113,6 @@ namespace Tamagotchi_WCF
             }
             if (found) return tmg;
             else { return null; }
-
         }
 
         public Tamagotchi CreateTamagotchi(string name)

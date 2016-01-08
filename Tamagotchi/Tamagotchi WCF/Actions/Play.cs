@@ -22,6 +22,7 @@ namespace Tamagotchi_WCF.Actions
             using (var context = new TmgContext())
             {
                 tmg.Boredom -= 10;
+                if (tmg.Boredom < 0) tmg.Boredom = 0;
                 tmg.LastAcces = DateTime.Now;
                 tmg.AccesGranted = DateTime.Now.AddSeconds(30);
                 context.Entry(tmg).State = EntityState.Modified;

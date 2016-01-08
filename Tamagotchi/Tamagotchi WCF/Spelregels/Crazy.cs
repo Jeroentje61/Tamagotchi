@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Tamagotchi_WCF.Spelregels
 {
-    public class Crazy
+    public class Crazy : ISpelregel
     {
     }
 }

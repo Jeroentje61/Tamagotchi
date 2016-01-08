@@ -22,6 +22,7 @@ namespace Tamagotchi_WCF.Actions
             using (var context = new TmgContext())
             {
                 tmg.Health -= 5;
+                if (tmg.Health < 0) tmg.Health = 0;
                 tmg.LastAcces = DateTime.Now;
                 tmg.AccesGranted = DateTime.Now.AddSeconds(60);
                 context.Entry(tmg).State = EntityState.Modified;

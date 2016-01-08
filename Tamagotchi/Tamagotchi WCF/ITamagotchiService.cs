@@ -20,7 +20,10 @@ namespace Tamagotchi_WCF
         Tamagotchi ChooseTamagotchi(string name);
 
         [OperationContract]
-        int[] GetStatusses();
+        List<Tamagotchi> GetLivingTamagotchis();
+
+        [OperationContract]
+        void DoSpelregels(List<Tamagotchi> tmgs);
 
         [OperationContract]
         string PerformAction(string action, Tamagotchi tmg);
@@ -72,9 +75,7 @@ namespace Tamagotchi_WCF
             }
             set
             {
-                if (value <= 0) _hunger = 0;
-                else if (value >= 100) _hunger = 100;
-                else _hunger = value;
+                _hunger = value;
             }
         }
 
@@ -87,9 +88,7 @@ namespace Tamagotchi_WCF
             }
             set
             {
-                if (value <= 0) _sleep = 0;
-                else if (value >= 100) _sleep = 100;
-                else _sleep = value;
+                _sleep = value;
             }
         }
         
@@ -102,9 +101,7 @@ namespace Tamagotchi_WCF
             }
             set
             {
-                if (value <= 0) _boredom = 0;
-                else if (value >= 100) _boredom = 100;
-                else _boredom = value;
+                _boredom = value;
             }
         }
 
@@ -117,9 +114,7 @@ namespace Tamagotchi_WCF
             }
             set
             {
-                if (value <= 0) _health = 0;
-                else if (value >= 100) _health = 100;
-                else _health = value;
+                _health = value;
             }
         }
         [DataMember]

@@ -21,5 +21,7 @@ namespace Tamagotchi_WCF.Spelregels
             }
             return tmg;
         }
+
+
     }
 }
