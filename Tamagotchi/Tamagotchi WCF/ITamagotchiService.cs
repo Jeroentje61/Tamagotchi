@@ -40,6 +40,7 @@ namespace Tamagotchi_WCF
         private int _boredom = 0;
         private int _health = 0;
         private string _name = "";
+        private bool _alive = true;
 
         public TamagotchiStats()
         {
@@ -119,6 +120,21 @@ namespace Tamagotchi_WCF
                 if (value <= 0) _health = 0;
                 else if (value >= 100) _health = 100;
                 else _health = value;
+            }
+        }
+        [DataMember]
+        public bool Alive
+        {
+            get
+            {
+                return _alive;
+            }
+            set
+            {
+                if (_alive)
+                {
+                    _alive = value;
+                }
             }
         }
     }

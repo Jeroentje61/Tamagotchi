@@ -92,8 +92,16 @@
     </Compile>
     <Compile Include="ITamagotchiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spelregels\Crazy.cs" />
+    <Compile Include="Spelregels\Honger.cs" />
+    <Compile Include="Spelregels\Isolatie.cs" />
     <Compile Include="Spelregels\ISpelregel.cs" />
+    <Compile Include="Spelregels\Munchies.cs" />
+    <Compile Include="Spelregels\Slaaptekort.cs" />
+    <Compile Include="Spelregels\Topatleet.cs" />
     <Compile Include="Spelregels\Vermoeidheid.cs" />
+    <Compile Include="Spelregels\Verveling.cs" />
+    <Compile Include="Spelregels\Voedseltekort.cs" />
     <Compile Include="Tamagotchi.cs" />
     <Compile Include="TmgContext.cs" />
   </ItemGroup>
