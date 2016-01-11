@@ -9,13 +9,17 @@
   <xs:complexType name="Tamagotchi">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccesGranted" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Alive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Boredom" type="xs:int" />
+      <xs:element minOccurs="0" name="Crazy" type="xs:boolean" />
       <xs:element minOccurs="0" name="Health" type="xs:int" />
       <xs:element minOccurs="0" name="Hunger" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastAcces" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Munchies" type="xs:boolean" />
       <xs:element minOccurs="0" name="Naam" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sleep" type="xs:int" />
+      <xs:element minOccurs="0" name="TopAtleet" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Tamagotchi" nillable="true" type="tns:Tamagotchi" />
