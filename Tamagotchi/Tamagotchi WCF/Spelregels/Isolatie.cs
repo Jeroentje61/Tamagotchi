@@ -13,6 +13,8 @@ namespace Tamagotchi_WCF.Spelregels
             TimeSpan Difference = DateTime.Now - tmg.LastAcces;
             int HoursPassed = (int)Difference.TotalHours;
             tmg.Health += (HoursPassed * 5);
+            Topatleet rule = new Topatleet();
+            rule.ExecuteSpelregel(tmg);
             if (tmg.Health >= 100) { tmg.Health = 100; Crazy crazy = new Crazy(); tmg = crazy.ExecuteSpelregel(tmg); }
             using (var context = new TmgContext())
             {
