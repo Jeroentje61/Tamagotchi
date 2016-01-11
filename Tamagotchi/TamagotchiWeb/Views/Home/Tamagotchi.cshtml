@@ -1,23 +1,16 @@
 ﻿@{
     ViewBag.Title = "Welkom op de Statuspagina van je Tamagotchi";
-
-    string path = Server.MapPath("~/Content/Images/Hunger.png");
-    
 }
 <center><h2>@ViewBag.Title</h2></center>
 <center><h3>Tamagotchi: @ViewBag.Naam</h3></center>
+
+<center><img src=@ViewBag.StatusImg alt="Status" height="160" width="156"/></center>
 
 Honger      : <p>@ViewBag.Hunger</p>
 Vermoeidheid: <p>@ViewBag.Sleep</p>
 Verveeldheid: <p>@ViewBag.Boredom</p>
 Gezondheid  : <p>@ViewBag.Health</p>
 
-
-<select name="photoChoice">
-    <option value="Hunger.png">Photo 1</option>
-    </select>
-
-    <img src="@path" alt="Status" />
     @using (Html.BeginForm("Add", "Home", FormMethod.Post))
     {
 
