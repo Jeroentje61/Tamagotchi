@@ -13,12 +13,7 @@ namespace TamagotchiWeb.Controllers
     {
         ServiceReference1.ITamagotchiService service = new ServiceReference1.TamagotchiServiceClient();
         public ActionResult Index()
-        {
-           // ViewBag.Hunger = Url.Content("~/Content/Images/Hunger.png");
-           // ViewBag.Sleep = Server.MapPath("~") + @"Content\Images\Sleep.png";
-            //ViewBag.Boredom = Server.MapPath("~") + @"Content\Images\Boredom.png";
-          //  ViewBag.Health = Server.MapPath("~") + @"Content\Images\Health.png";        
-
+        { 
             List<ServiceReference1.Tamagotchi> TamagotchiList = new List<ServiceReference1.Tamagotchi>();
             foreach (ServiceReference1.Tamagotchi item in service.GetTamagotchis())
             {
@@ -47,21 +42,26 @@ namespace TamagotchiWeb.Controllers
             if (service.ChooseTamagotchi(TamagotchiID).Alive == false)
             {
                ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/4-Death-funeral-grave-gravestone-graveyard-stone-rip-48_zpsk0qhudey.png";
+               ViewBag.Status = "Dead";
             }
       else if (ViewBag.Hunger >= ViewBag.Sleep && ViewBag.Hunger >= ViewBag.Boredom && ViewBag.Hunger >= ViewBag.Health){
           ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/Hunger_zpsejudkerd.png";
+          ViewBag.Status = "Hunger";
       }
       else if (ViewBag.Sleep > ViewBag.Hunger && ViewBag.Sleep > ViewBag.Boredom && ViewBag.Sleep > ViewBag.Health)
       {
           ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/Sleep_zpsdftptpku.png";
+          ViewBag.Status = "Sleep";
       }
       else if (ViewBag.Boredom > ViewBag.Hunger && ViewBag.Boredom > ViewBag.Sleep && ViewBag.Boredom > ViewBag.Health)
       {
           ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/Boredom_zpsjer3tat6.png";
+          ViewBag.Status = "Boredom";
       }
       else if (ViewBag.Health > ViewBag.Hunger && ViewBag.Health > ViewBag.Boredom && ViewBag.Health > ViewBag.Sleep)
       {
           ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/Health_zpsecaamucf.png";
+          ViewBag.Status = "Health";
       }
             
             return View();
