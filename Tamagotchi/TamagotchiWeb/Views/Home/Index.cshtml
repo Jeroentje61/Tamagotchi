@@ -27,6 +27,7 @@
         <th>Slaap</th>
         <th>Verveeldheid</th>
         <th>Gezondheid</th>
+        <th>Levend</th>
     </tr>
     @foreach (var item in ViewBag.Tamagotchis)
     {
@@ -44,6 +45,7 @@
     <td>@item.Sleep</td>
     <td>@item.Boredom</td>
     <td>@item.Health</td>
+            <td>@item.Alive</td>
                            
         </tr>
     }

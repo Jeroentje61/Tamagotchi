@@ -43,7 +43,12 @@ namespace TamagotchiWeb.Controllers
             ViewBag.Boredom = service.ChooseTamagotchi(TamagotchiID).Boredom;
             ViewBag.Health = service.ChooseTamagotchi(TamagotchiID).Health;
 
-      if (ViewBag.Hunger >= ViewBag.Sleep && ViewBag.Hunger >= ViewBag.Boredom && ViewBag.Hunger >= ViewBag.Health){
+
+            if (service.ChooseTamagotchi(TamagotchiID).Alive == false)
+            {
+               ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/4-Death-funeral-grave-gravestone-graveyard-stone-rip-48_zpsk0qhudey.png";
+            }
+      else if (ViewBag.Hunger >= ViewBag.Sleep && ViewBag.Hunger >= ViewBag.Boredom && ViewBag.Hunger >= ViewBag.Health){
           ViewBag.StatusImg = "http://i1085.photobucket.com/albums/j431/antiwoutertje/Hunger_zpsejudkerd.png";
       }
       else if (ViewBag.Sleep > ViewBag.Hunger && ViewBag.Sleep > ViewBag.Boredom && ViewBag.Sleep > ViewBag.Health)
