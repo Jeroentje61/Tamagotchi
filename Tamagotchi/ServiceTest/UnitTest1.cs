@@ -3,13 +3,55 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tamagotchi_WCF;
 using Moq;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace ServiceTest
 {
     [TestClass]
     public class UnitTest1
     {
-        Mock<ITamagotchiService> mocktamagotchi = new Mock<ITamagotchiService>();
+        public UnitTest1()
+        {
+           
+            //mock tamagotchis aanmaken
+            IList<Tamagotchi> tamagotchis = new List<Tamagotchi>
+            {
+                new Tamagotchi {
+                Naam = "Henk",
+                Hunger = 0,
+                Sleep = 0,
+                Boredom = 0,
+                Health = 0,
+                LastAcces = DateTime.MinValue,
+                AccesGranted = DateTime.MinValue,
+                Alive = true,
+                Crazy = false,
+                Munchies = false,
+                TopAtleet = true
+            },
+            new Tamagotchi {
+                Naam = "Jan",
+                Hunger = 0,
+                Sleep = 0,
+                Boredom = 0,
+                Health = 0,
+                LastAcces = DateTime.MinValue,
+                AccesGranted = DateTime.MinValue,
+                Alive = true,
+                Crazy = false,
+                Munchies = false,
+                TopAtleet = true
+            }
+            };
+            // interface mocken
+            Mock<ITamagotchiService> mocktamagotchi = new Mock<ITamagotchiService>();
+
+            //Deze schijt regel!!!!@@@@@@@@@
+            //mocktamagotchi.Setup(mr => mr.GetTamagotchis()).Returns(tamagotchis);
+
+
+        }
+        
        
         
         public Tamagotchi GetTamagotchi()
