@@ -26,7 +26,13 @@ namespace TamagotchiConsole.TamagotchiService {
         private System.DateTime AccesGrantedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AliveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int BoredomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CrazyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int HealthField;
@@ -41,10 +47,16 @@ namespace TamagotchiConsole.TamagotchiService {
         private System.DateTime LastAccesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool MunchiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NaamField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SleepField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool TopAtleetField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -70,6 +82,19 @@ namespace TamagotchiConsole.TamagotchiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Alive {
+            get {
+                return this.AliveField;
+            }
+            set {
+                if ((this.AliveField.Equals(value) != true)) {
+                    this.AliveField = value;
+                    this.RaisePropertyChanged("Alive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Boredom {
             get {
                 return this.BoredomField;
@@ -78,6 +103,19 @@ namespace TamagotchiConsole.TamagotchiService {
                 if ((this.BoredomField.Equals(value) != true)) {
                     this.BoredomField = value;
                     this.RaisePropertyChanged("Boredom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Crazy {
+            get {
+                return this.CrazyField;
+            }
+            set {
+                if ((this.CrazyField.Equals(value) != true)) {
+                    this.CrazyField = value;
+                    this.RaisePropertyChanged("Crazy");
                 }
             }
         }
@@ -135,6 +173,19 @@ namespace TamagotchiConsole.TamagotchiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Munchies {
+            get {
+                return this.MunchiesField;
+            }
+            set {
+                if ((this.MunchiesField.Equals(value) != true)) {
+                    this.MunchiesField = value;
+                    this.RaisePropertyChanged("Munchies");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Naam {
             get {
                 return this.NaamField;
@@ -156,6 +207,19 @@ namespace TamagotchiConsole.TamagotchiService {
                 if ((this.SleepField.Equals(value) != true)) {
                     this.SleepField = value;
                     this.RaisePropertyChanged("Sleep");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool TopAtleet {
+            get {
+                return this.TopAtleetField;
+            }
+            set {
+                if ((this.TopAtleetField.Equals(value) != true)) {
+                    this.TopAtleetField = value;
+                    this.RaisePropertyChanged("TopAtleet");
                 }
             }
         }
@@ -186,11 +250,17 @@ namespace TamagotchiConsole.TamagotchiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi", ReplyAction="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse")]
         System.Threading.Tasks.Task<TamagotchiConsole.TamagotchiService.Tamagotchi> ChooseTamagotchiAsync(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetStatusses", ReplyAction="http://tempuri.org/ITamagotchiService/GetStatussesResponse")]
-        int[] GetStatusses();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetLivingTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetLivingTamagotchisResponse")]
+        TamagotchiConsole.TamagotchiService.Tamagotchi[] GetLivingTamagotchis();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetStatusses", ReplyAction="http://tempuri.org/ITamagotchiService/GetStatussesResponse")]
-        System.Threading.Tasks.Task<int[]> GetStatussesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/GetLivingTamagotchis", ReplyAction="http://tempuri.org/ITamagotchiService/GetLivingTamagotchisResponse")]
+        System.Threading.Tasks.Task<TamagotchiConsole.TamagotchiService.Tamagotchi[]> GetLivingTamagotchisAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/DoSpelregels", ReplyAction="http://tempuri.org/ITamagotchiService/DoSpelregelsResponse")]
+        void DoSpelregels(TamagotchiConsole.TamagotchiService.Tamagotchi[] tmgs);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/DoSpelregels", ReplyAction="http://tempuri.org/ITamagotchiService/DoSpelregelsResponse")]
+        System.Threading.Tasks.Task DoSpelregelsAsync(TamagotchiConsole.TamagotchiService.Tamagotchi[] tmgs);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITamagotchiService/PerformAction", ReplyAction="http://tempuri.org/ITamagotchiService/PerformActionResponse")]
         string PerformAction(string action, TamagotchiConsole.TamagotchiService.Tamagotchi tmg);
@@ -248,12 +318,20 @@ namespace TamagotchiConsole.TamagotchiService {
             return base.Channel.ChooseTamagotchiAsync(name);
         }
         
-        public int[] GetStatusses() {
-            return base.Channel.GetStatusses();
+        public TamagotchiConsole.TamagotchiService.Tamagotchi[] GetLivingTamagotchis() {
+            return base.Channel.GetLivingTamagotchis();
         }
         
-        public System.Threading.Tasks.Task<int[]> GetStatussesAsync() {
-            return base.Channel.GetStatussesAsync();
+        public System.Threading.Tasks.Task<TamagotchiConsole.TamagotchiService.Tamagotchi[]> GetLivingTamagotchisAsync() {
+            return base.Channel.GetLivingTamagotchisAsync();
+        }
+        
+        public void DoSpelregels(TamagotchiConsole.TamagotchiService.Tamagotchi[] tmgs) {
+            base.Channel.DoSpelregels(tmgs);
+        }
+        
+        public System.Threading.Tasks.Task DoSpelregelsAsync(TamagotchiConsole.TamagotchiService.Tamagotchi[] tmgs) {
+            return base.Channel.DoSpelregelsAsync(tmgs);
         }
         
         public string PerformAction(string action, TamagotchiConsole.TamagotchiService.Tamagotchi tmg) {
