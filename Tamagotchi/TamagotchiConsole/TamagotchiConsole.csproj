@@ -78,9 +78,6 @@
     <None Include="Service References\TamagotchiService\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TamagotchiService\Service3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\TamagotchiService\TamagotchiConsole.TamagotchiService.Tamagotchi.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

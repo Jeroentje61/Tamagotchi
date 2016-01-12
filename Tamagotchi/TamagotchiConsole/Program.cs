@@ -27,7 +27,7 @@ namespace TamagotchiConsole
             else
             {
                 Console.WriteLine("Kies een van de volgende Tamagotchis door zijn/haar naam in te typen...");
-                if (service.GetTamagotchis() != null)
+                if (service.GetLivingTamagotchis() != null)
                 {
                     foreach (TamagotchiService.Tamagotchi item in service.GetTamagotchis())
                     {
