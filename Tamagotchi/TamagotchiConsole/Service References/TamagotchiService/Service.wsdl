@@ -30,7 +30,6 @@
       <xsd:import schemaLocation="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Tamagotchi_WCF" />
-      <xsd:import schemaLocation="http://tamagotchiniels.azurewebsites.net/Service.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ITamagotchiService_GetTamagotchis_InputMessage">
@@ -45,11 +44,17 @@
   <wsdl:message name="ITamagotchiService_ChooseTamagotchi_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChooseTamagotchiResponse" />
   </wsdl:message>
-  <wsdl:message name="ITamagotchiService_GetStatusses_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStatusses" />
+  <wsdl:message name="ITamagotchiService_GetLivingTamagotchis_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLivingTamagotchis" />
   </wsdl:message>
-  <wsdl:message name="ITamagotchiService_GetStatusses_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStatussesResponse" />
+  <wsdl:message name="ITamagotchiService_GetLivingTamagotchis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLivingTamagotchisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITamagotchiService_DoSpelregels_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoSpelregels" />
+  </wsdl:message>
+  <wsdl:message name="ITamagotchiService_DoSpelregels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoSpelregelsResponse" />
   </wsdl:message>
   <wsdl:message name="ITamagotchiService_PerformAction_InputMessage">
     <wsdl:part name="parameters" element="tns:PerformAction" />
@@ -72,9 +77,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchi" message="tns:ITamagotchiService_ChooseTamagotchi_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITamagotchiService/ChooseTamagotchiResponse" message="tns:ITamagotchiService_ChooseTamagotchi_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetStatusses">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITamagotchiService/GetStatusses" message="tns:ITamagotchiService_GetStatusses_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITamagotchiService/GetStatussesResponse" message="tns:ITamagotchiService_GetStatusses_OutputMessage" />
+    <wsdl:operation name="GetLivingTamagotchis">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITamagotchiService/GetLivingTamagotchis" message="tns:ITamagotchiService_GetLivingTamagotchis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITamagotchiService/GetLivingTamagotchisResponse" message="tns:ITamagotchiService_GetLivingTamagotchis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSpelregels">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITamagotchiService/DoSpelregels" message="tns:ITamagotchiService_DoSpelregels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITamagotchiService/DoSpelregelsResponse" message="tns:ITamagotchiService_DoSpelregels_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PerformAction">
       <wsdl:input wsaw:Action="http://tempuri.org/ITamagotchiService/PerformAction" message="tns:ITamagotchiService_PerformAction_InputMessage" />
@@ -105,8 +114,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetStatusses">
-      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/GetStatusses" style="document" />
+    <wsdl:operation name="GetLivingTamagotchis">
+      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/GetLivingTamagotchis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSpelregels">
+      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/DoSpelregels" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -154,8 +172,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetStatusses">
-      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/GetStatusses" style="document" />
+    <wsdl:operation name="GetLivingTamagotchis">
+      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/GetLivingTamagotchis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSpelregels">
+      <soap:operation soapAction="http://tempuri.org/ITamagotchiService/DoSpelregels" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
