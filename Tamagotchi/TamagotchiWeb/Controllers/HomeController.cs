@@ -67,11 +67,9 @@ namespace TamagotchiWeb.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Command()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return RedirectToAction("Tamagotchi");
         }
     }
 }

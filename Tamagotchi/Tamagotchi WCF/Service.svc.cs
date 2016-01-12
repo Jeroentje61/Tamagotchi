@@ -62,7 +62,7 @@ namespace Tamagotchi_WCF
         private bool RollTheDice(Tamagotchi tmg, out string crazy)
         {
             Random r = new Random();
-            int chance = r.Next(1);
+            int chance = r.Next(2);
             if (chance == 0)
             {
                 crazy = "Je Tamagotchi is Crazy, maar heeft dit maal geluk!";
