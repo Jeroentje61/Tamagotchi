@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tamagotchi_WCF;
-using Moq;
+//using Moq;
+using System.Linq;
 using System.Data.Entity;
 using System.Collections.Generic;
 
@@ -10,14 +11,9 @@ namespace ServiceTest
     [TestClass]
     public class UnitTest1
     {
-        public UnitTest1()
-        {
-           
-            //mock tamagotchis aanmaken
-            IList<Tamagotchi> tamagotchis = new List<Tamagotchi>
-            {
-                new Tamagotchi {
-                Naam = "Henk",
+
+        Tamagotchi Henk = new Tamagotchi{
+            Naam = "Henk",
                 Hunger = 0,
                 Sleep = 0,
                 Boredom = 0,
@@ -28,74 +24,76 @@ namespace ServiceTest
                 Crazy = false,
                 Munchies = false,
                 TopAtleet = true
-            },
-            new Tamagotchi {
-                Naam = "Jan",
-                Hunger = 0,
-                Sleep = 0,
-                Boredom = 0,
-                Health = 0,
-                LastAcces = DateTime.MinValue,
-                AccesGranted = DateTime.MinValue,
-                Alive = true,
-                Crazy = false,
-                Munchies = false,
-                TopAtleet = true
-            }
             };
-            // interface mocken
-            Mock<ITamagotchiService> mocktamagotchi = new Mock<ITamagotchiService>();
+        Tamagotchi Jan = new Tamagotchi
+        {
+            Naam = "Jan",
+            Hunger = 0,
+            Sleep = 0,
+            Boredom = 0,
+            Health = 0,
+            LastAcces = DateTime.MinValue,
+            AccesGranted = DateTime.MinValue,
+            Alive = true,
+            Crazy = false,
+            Munchies = false,
+            TopAtleet = true
+        };
 
-            //Deze schijt regel!!!!@@@@@@@@@
-            //mocktamagotchi.Setup(mr => mr.GetTamagotchis()).Returns(tamagotchis);
+        private Tamagotchi swagger;
 
-
+        public void Init()
+        {
+            swagger = new Tamagotchi();
         }
+
         
        
-        
-        public Tamagotchi GetTamagotchi()
+        [TestMethod]
+        public void ChooseTamagotchiTest()
         {
-            
+            //Arrange
+            //string name = "Jan";
 
-            Tamagotchi tmgtest = new Tamagotchi()
-            {
-                Naam = "Henk",
-                Hunger = 0,
-                Sleep = 0,
-                Boredom = 0,
-                Health = 0,
-                LastAcces = DateTime.MinValue,
-                AccesGranted = DateTime.MinValue
-            };
-            return tmgtest;
+            //Act
+            //Tamagotchi tmg = this.MockTamagotchi.ChooseTamagotchi(name);
+            
+            //Assert
+            //Assert.AreEqual(tmg, Jan);
         }
 
         [TestMethod]
         public void GetTamagotchiTest()
         {
+
+        }
+
+        [TestMethod]
+        public void SlaapTekortTest()
+        {
+            
+
         }
 
         [TestMethod]
         public void CreateTamagotchiTest()
         {
             //Arrange
-            
-            string name = "BlaBla";
-            Tamagotchi tmg;
+            //string name = "Henk";
+            //Tamagotchi tmg;
             //Act
             //tmg = mocktamagotchi.CreateTamagotchi(name);
             //Assert
-           // Assert.IsNotNull(tmg);
+            //Assert.IsNotNull(tmg);
         }
 
         [TestMethod]
         public void PerformActionTest()
         {
             //Arrange
-            string actie = "sleep";
-            string result;
-            Tamagotchi tmgtest = GetTamagotchi();
+            //string actie = "sleep";
+            //string result;
+            //Tamagotchi tmgtest = GetTamagotchi();
 
             //Act
             //result = service.PerformAction(actie, tmgtest);
@@ -104,9 +102,6 @@ namespace ServiceTest
             //Assert.AreEqual(result, "Je Tamagotchi is aan het slapen. Dit duurt 2 uur.");
         }
 
-        public void ChooseTamagotchiTest()
-        {
-
-        }
+ 
     }
 }
