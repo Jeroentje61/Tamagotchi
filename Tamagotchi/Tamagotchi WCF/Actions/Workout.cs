@@ -26,8 +26,7 @@ namespace Tamagotchi_WCF.Actions
                 tmg.Crazy = false;
                 tmg.LastAcces = DateTime.Now;
                 tmg.AccesGranted = DateTime.Now.AddSeconds(TimeSpan);
-            //    context.Entry(tmg).State = EntityState.Modified;
-              //  context.SaveChanges();
+            
             }
 
             return _message;

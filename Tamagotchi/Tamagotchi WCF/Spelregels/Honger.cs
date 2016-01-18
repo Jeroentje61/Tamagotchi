@@ -14,11 +14,7 @@ namespace Tamagotchi_WCF.Spelregels
             int HoursPassed = (int)Difference.TotalHours;
             tmg.Hunger += (HoursPassed * 5);
             if (tmg.Hunger >= 100) { tmg.Hunger = 100; Voedseltekort tekort = new Voedseltekort(); tmg = tekort.ExecuteSpelregel(tmg); }
-            //using (var context = new TmgContext())
-            //{
-            //    context.Entry(tmg).State = EntityState.Modified;
-            //    context.SaveChanges();
-            //}
+            
             return tmg;
         }
     }
