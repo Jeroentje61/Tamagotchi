@@ -14,11 +14,11 @@ namespace Tamagotchi_WCF.Spelregels
             int HoursPassed = (int)Difference.TotalHours;
             tmg.Sleep += (HoursPassed * 5);
             if (tmg.Sleep >= 100) { tmg.Sleep = 100; Slaaptekort tekort = new Slaaptekort(); tmg = tekort.ExecuteSpelregel(tmg); }
-            using (var context = new TmgContext())
-            {
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            //using (var context = new TmgContext())
+            //{
+            //    context.Entry(tmg).State = EntityState.Modified;
+            //    context.SaveChanges();
+            //}
             return tmg;
         }
     }

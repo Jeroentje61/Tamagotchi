@@ -16,11 +16,11 @@ namespace Tamagotchi_WCF.Spelregels
             Topatleet rule = new Topatleet();
             rule.ExecuteSpelregel(tmg);
             if (tmg.Health >= 100) { tmg.Health = 100; Crazy crazy = new Crazy(); tmg = crazy.ExecuteSpelregel(tmg); }
-            using (var context = new TmgContext())
-            {
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            //using (var context = new TmgContext())
+            //{
+            //    context.Entry(tmg).State = EntityState.Modified;
+            //    context.SaveChanges();
+            //}
             return tmg;
         }
     }

@@ -14,11 +14,11 @@ namespace Tamagotchi_WCF.Spelregels
             {
                 tmg.Alive = false;
             }
-            using (var context = new TmgContext())
-            {
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            //using (var context = new TmgContext())
+            //{
+            //    context.Entry(tmg).State = EntityState.Modified;
+            //    context.SaveChanges();
+            //}
             return tmg;
         }
     }
