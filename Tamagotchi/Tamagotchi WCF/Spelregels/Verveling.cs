@@ -15,11 +15,11 @@ namespace Tamagotchi_WCF.Spelregels
             tmg.Boredom += (HoursPassed * 15);
             if (tmg.Boredom >= 100) { tmg.Boredom = 100; }
             if (tmg.Boredom >= 80) { Munchies munchies = new Munchies(); tmg = munchies.ExecuteSpelregel(tmg); }
-            using (var context = new TmgContext())
-            {
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            //using (var context = new TmgContext())
+            //{
+            //    context.Entry(tmg).State = EntityState.Modified;
+            //    context.SaveChanges();
+            //}
             return tmg;
         }
     }
