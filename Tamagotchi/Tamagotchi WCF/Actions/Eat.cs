@@ -29,9 +29,9 @@ namespace Tamagotchi_WCF.Actions
             {
                 tmg.Hunger = 0;
                 tmg.LastAcces = DateTime.Now;
-                tmg.AccesGranted = DateTime.Now.AddSeconds(30);
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
+                tmg.AccesGranted = DateTime.Now.AddSeconds(TimeSpan);
+            //    context.Entry(tmg).State = EntityState.Modified;
+              //  context.SaveChanges();
             }            
             
             return _message;

@@ -25,9 +25,9 @@ namespace Tamagotchi_WCF.Actions
                 if (tmg.Boredom < 0) tmg.Boredom = 0;
                 if (tmg.Boredom <= 80) { Spelregels.Munchies munchies = new Spelregels.Munchies(); tmg = munchies.ExecuteSpelregel(tmg); }
                 tmg.LastAcces = DateTime.Now;
-                tmg.AccesGranted = DateTime.Now.AddSeconds(30);
-                context.Entry(tmg).State = EntityState.Modified;
-                context.SaveChanges();
+                tmg.AccesGranted = DateTime.Now.AddSeconds(TimeSpan);
+              //  context.Entry(tmg).State = EntityState.Modified;
+              //  context.SaveChanges();
             }
             return _message;
         }

@@ -65,8 +65,7 @@ namespace ServiceTest
         }
         
         public Tamagotchi GetTamagotchi()
-        {
-            
+        { 
 
             Tamagotchi tmgtest = new Tamagotchi()
             {
@@ -82,16 +81,60 @@ namespace ServiceTest
         }
 
         [TestMethod]
+        public void HugTest()
+        {
+            //Arrange
+            String message;
+            //Act
+            IAction i = new Hug();
+              message = i.Act(tamagotchi);
+            //Assert
+              Assert.AreEqual("Je Tamagotchi is aan het knuffelen. Dit duurt 60 seconden.", message);
+        }
+        [TestMethod]
+        public void PlayTest()
+        {
+            //Arrange
+            String message;
+            //Act
+            IAction i = new Play();
+            message = i.Act(tamagotchi);
+            //Assert
+            Assert.AreEqual("Je Tamagotchi is aan het spelen. Dit duurt 30 seconden.", message);
+        }
+        [TestMethod]
+        public void SleepTest()
+        {
+            //Arrange
+            String message;
+            //Act
+            IAction i = new Sleep();
+            message = i.Act(tamagotchi);
+            //Assert
+            Assert.AreEqual("Je Tamagotchi is aan het slapen. Dit duurt 2 uur.", message);
+        }
+        [TestMethod]
+        public void WorkoutTest()
+        {
+            //Arrange
+            String message;
+            //Act
+            IAction i = new Workout();
+            message = i.Act(tamagotchi);
+            //Assert
+            Assert.AreEqual("Je Tamagotchi doet een workout. Dit duurt 60 seconden.", message);
+        }
+
+        [TestMethod]
         public void EatTest()
         {
             //Arrange
-            tamagotchi.Sleep = 100;
-            tamagotchi.Alive = false;
+            String message;
             //Act
             IAction i = new Eat();
-            //    "eat" = i.Act(tamagotchi);
+            message = i.Act(tamagotchi);
             //Assert
-            Assert.AreEqual(false, tamagotchi.Alive);
+            Assert.AreEqual("Je Tamagotchi is aan het eten. Dit duurt 30 seconden.", message);
         }
 
         [TestMethod]
@@ -118,6 +161,18 @@ namespace ServiceTest
             //Assert
             Assert.AreEqual(100, tamagotchi.Health);
         }
+        [TestMethod]
+        public void CrazyFalseTest()
+        {
+            //Arrange
+            tamagotchi.Health = 50;
+            tamagotchi.Crazy = false;
+            //Act
+            ISpelregel i = new Crazy();
+            tamagotchi = i.ExecuteSpelregel(tamagotchi);
+            //Assert
+            Assert.AreEqual(50, tamagotchi.Health);
+        }
 
         [TestMethod]
         public void HongerTest()
@@ -140,7 +195,7 @@ namespace ServiceTest
             ISpelregel i = new Isolatie();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(0, tamagotchi.Health);
+            Assert.AreEqual(100, tamagotchi.Health);
         }
         [TestMethod]
         public void MunchiesTest()
