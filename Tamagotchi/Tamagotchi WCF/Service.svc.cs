@@ -56,7 +56,15 @@ namespace Tamagotchi_WCF
             {
                 if (!RollTheDice(tmg, out crazy)) return crazy;
             }
-            return actie.Act(tmg) + crazy;
+            Tamagotchi tamg = new Tamagotchi();
+            string result = actie.Act(tmg, out tamg);
+            using (var context = new TmgContext())
+            {
+                context.Entry(tamg).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+            return result + crazy;
         }
 
         private bool RollTheDice(Tamagotchi tmg, out string crazy)

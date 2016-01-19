@@ -15,7 +15,7 @@ namespace Tamagotchi_WCF.Actions
             get { return _timespan; }
         }
 
-        public string Act(Tamagotchi tmg)
+        public string Act(Tamagotchi tmg, out Tamagotchi tamg)
         {
             
             using (var context = new TmgContext())
@@ -27,6 +27,7 @@ namespace Tamagotchi_WCF.Actions
                 tmg.AccesGranted = DateTime.Now.AddSeconds(TimeSpan);
              
             }
+            tamg = tmg;
 
             return _message;
         }
