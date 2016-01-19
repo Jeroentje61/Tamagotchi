@@ -139,23 +139,25 @@ namespace ServiceTest
         public void HongerTest()
         {
             //Arrange
-            tamagotchi.Hunger = 100;
+            tamagotchi.Hunger = 40;
+            tamagotchi.LastAcces = DateTime.Now.AddHours(-2);
             //Act
             ISpelregel i = new Honger();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(false, tamagotchi.Alive);
+            Assert.AreEqual(50, tamagotchi.Hunger);
         }
         [TestMethod]
         public void IsolatieTest()
         {
             //Arrange
-            tamagotchi.Health = 100;
+            tamagotchi.Health = 50;
+            tamagotchi.LastAcces = DateTime.Now.AddHours(-2);
             //Act
             ISpelregel i = new Isolatie();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(100, tamagotchi.Health);
+            Assert.AreEqual(60, tamagotchi.Health);
         }
         [TestMethod]
         public void MunchiesTest()
@@ -195,12 +197,13 @@ namespace ServiceTest
         public void VervelingTest()
         {
             //Arrange
-            tamagotchi.Boredom = 100;
+            tamagotchi.Boredom = 50;
+            tamagotchi.LastAcces = DateTime.Now.AddHours(-2);
             //Act
             ISpelregel i = new Verveling();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(100, tamagotchi.Boredom);
+            Assert.AreEqual(80, tamagotchi.Boredom);
         }
     }
 }
