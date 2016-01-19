@@ -16,47 +16,6 @@ namespace ServiceTest
         private Tamagotchi_WCF.Tamagotchi tamagotchi;
         private Tamagotchi_WCF.TmgContext tmgcontext;
 
-        public UnitTest1()
-        {
-            //mock tamagotchis aanmaken
-            IList<Tamagotchi> tamagotchis = new List<Tamagotchi>
-            {
-                new Tamagotchi {
-                Naam = "Henk",
-                Hunger = 0,
-                Sleep = 0,
-                Boredom = 0,
-                Health = 0,
-                LastAcces = DateTime.MinValue,
-                AccesGranted = DateTime.MinValue,
-                Alive = true,
-                Crazy = false,
-                Munchies = false,
-                TopAtleet = true
-            },
-            new Tamagotchi {
-                Naam = "Jan",
-                Hunger = 0,
-                Sleep = 0,
-                Boredom = 0,
-                Health = 0,
-                LastAcces = DateTime.MinValue,
-                AccesGranted = DateTime.MinValue,
-                Alive = true,
-                Crazy = false,
-                Munchies = false,
-                TopAtleet = true
-            }
-            };
-            // interface mocken
-            Mock<ITamagotchiService> mocktamagotchi = new Mock<ITamagotchiService>();
-
-            //Deze schijt regel!!!!@@@@@@@@@
-            //mocktamagotchi.Setup(mr => mr.GetTamagotchis()).Returns(tamagotchis);
-
-
-        }
-        
        [TestInitialize]
         public void Init()
         {

@@ -13,8 +13,7 @@ namespace Tamagotchi_WCF.Spelregels
             if (tmg.Hunger == 100)
             {
                 tmg.Alive = false;
-            }
-           
+            }      
             return tmg;
         }
     }
