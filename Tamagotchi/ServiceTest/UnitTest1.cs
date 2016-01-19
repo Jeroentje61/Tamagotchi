@@ -87,7 +87,8 @@ namespace ServiceTest
             String message;
             //Act
             IAction i = new Hug();
-              message = i.Act(tamagotchi);
+            Tamagotchi tmg = new Tamagotchi();
+              message = i.Act(tamagotchi, out tmg);
             //Assert
               Assert.AreEqual("Je Tamagotchi is aan het knuffelen. Dit duurt 60 seconden.", message);
         }
@@ -97,8 +98,9 @@ namespace ServiceTest
             //Arrange
             String message;
             //Act
-            IAction i = new Play();
-            message = i.Act(tamagotchi);
+            IAction i = new Play(); 
+            Tamagotchi tmg = new Tamagotchi();
+            message = i.Act(tamagotchi, out tmg);
             //Assert
             Assert.AreEqual("Je Tamagotchi is aan het spelen. Dit duurt 30 seconden.", message);
         }
@@ -109,7 +111,8 @@ namespace ServiceTest
             String message;
             //Act
             IAction i = new Sleep();
-            message = i.Act(tamagotchi);
+            Tamagotchi tmg = new Tamagotchi();
+            message = i.Act(tamagotchi, out tmg);
             //Assert
             Assert.AreEqual("Je Tamagotchi is aan het slapen. Dit duurt 2 uur.", message);
         }
@@ -120,7 +123,8 @@ namespace ServiceTest
             String message;
             //Act
             IAction i = new Workout();
-            message = i.Act(tamagotchi);
+            Tamagotchi tmg = new Tamagotchi();
+            message = i.Act(tamagotchi, out tmg);
             //Assert
             Assert.AreEqual("Je Tamagotchi doet een workout. Dit duurt 60 seconden.", message);
         }
@@ -132,7 +136,8 @@ namespace ServiceTest
             String message;
             //Act
             IAction i = new Eat();
-            message = i.Act(tamagotchi);
+            Tamagotchi tmg = new Tamagotchi();
+            message = i.Act(tamagotchi, out tmg);
             //Assert
             Assert.AreEqual("Je Tamagotchi is aan het eten. Dit duurt 30 seconden.", message);
         }
@@ -142,7 +147,6 @@ namespace ServiceTest
         {
             //Arrange
             tamagotchi.Sleep = 100;
-            tamagotchi.Alive = false;
             //Act
             ISpelregel i = new Slaaptekort();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
@@ -154,24 +158,22 @@ namespace ServiceTest
         {
             //Arrange
             tamagotchi.Health = 100;
-            tamagotchi.Crazy = true;
             //Act
             ISpelregel i = new Crazy();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(100, tamagotchi.Health);
+            Assert.AreEqual(true, tamagotchi.Crazy);
         }
         [TestMethod]
         public void CrazyFalseTest()
         {
             //Arrange
             tamagotchi.Health = 50;
-            tamagotchi.Crazy = false;
             //Act
             ISpelregel i = new Crazy();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(50, tamagotchi.Health);
+            Assert.AreEqual(false, tamagotchi.Crazy);
         }
 
         [TestMethod]
@@ -179,7 +181,6 @@ namespace ServiceTest
         {
             //Arrange
             tamagotchi.Hunger = 100;
-            tamagotchi.Alive = false;
             //Act
             ISpelregel i = new Honger();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
@@ -202,7 +203,6 @@ namespace ServiceTest
         {
             //Arrange
             tamagotchi.Boredom = 100;
-            tamagotchi.Munchies = true;
             //Act
             ISpelregel i = new Munchies();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
@@ -214,7 +214,6 @@ namespace ServiceTest
         {
             //Arrange
             tamagotchi.Health = 0;
-            tamagotchi.TopAtleet = true;
             //Act
             ISpelregel i = new Topatleet();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
@@ -225,12 +224,13 @@ namespace ServiceTest
         public void VermoeidheidTest()
         {
             //Arrange
-            tamagotchi.Sleep = 100;
+            tamagotchi.Sleep = 50;
+            tamagotchi.LastAcces = DateTime.Now.AddHours(-2);
             //Act
             ISpelregel i = new Vermoeidheid();
             tamagotchi = i.ExecuteSpelregel(tamagotchi);
             //Assert
-            Assert.AreEqual(100, tamagotchi.Sleep);
+            Assert.AreEqual(60, tamagotchi.Sleep);
         }
         [TestMethod]
         public void VervelingTest()

@@ -15,7 +15,7 @@ namespace Tamagotchi_WCF.Actions
             get { return _timespan; }
         }
 
-        public string Act(Tamagotchi tmg)
+        public string Act(Tamagotchi tmg, out Tamagotchi tamg)
         {
             //set cooldown op 3600 seconden.
             //sleep wordt 0;
@@ -26,7 +26,7 @@ namespace Tamagotchi_WCF.Actions
                 tmg.AccesGranted = DateTime.Now.AddHours(TimeSpan);
             
             }
-
+            tamg = tmg;
             return _message;
         }
     }
