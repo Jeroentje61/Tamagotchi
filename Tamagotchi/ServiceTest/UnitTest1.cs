@@ -205,5 +205,50 @@ namespace ServiceTest
             //Assert
             Assert.AreEqual(80, tamagotchi.Boredom);
         }
+        [TestMethod]
+        public void Honger100Test()
+        {
+            //Arrange
+            tamagotchi.Hunger = 100;
+            //Act
+            ISpelregel i = new Honger();
+            tamagotchi = i.ExecuteSpelregel(tamagotchi);
+            //Assert
+            Assert.AreEqual(false, tamagotchi.Alive);
+        }
+        [TestMethod]
+        public void Isolatie100Test()
+        {
+            //Arrange
+            tamagotchi.Health = 100;
+            //Act
+            ISpelregel i = new Isolatie();
+            tamagotchi = i.ExecuteSpelregel(tamagotchi);
+            //Assert
+            Assert.AreEqual(100, tamagotchi.Health);
+        }
+        [TestMethod]
+        public void Sleep100Test()
+        {
+            //Arrange
+            tamagotchi.Sleep = 100;
+            //Act
+            ISpelregel i = new Vermoeidheid();
+            tamagotchi = i.ExecuteSpelregel(tamagotchi);
+            //Assert
+            Assert.AreEqual(false, tamagotchi.Alive);
+        }
+        [TestMethod]
+        public void Boredom100Test()
+        {
+            //Arrange
+            tamagotchi.Boredom = 100;
+            //Act
+            ISpelregel i = new Verveling();
+            tamagotchi = i.ExecuteSpelregel(tamagotchi);
+            //Assert
+            Assert.AreEqual(100, tamagotchi.Boredom);
+        }
+
     }
 }
